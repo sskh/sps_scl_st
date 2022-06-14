@@ -1,0 +1,18 @@
+PROGRAM PLC_PRG
+VAR
+    controller    :         PID := (Y_min:=0, Y_max:=100);
+    ActT         :        REAL ;     // IstTemperatur     -         Aktuelle Temperatur
+    SetT         :         REAL;    // SollTemperatur     -        Eingestellte Temperatur
+    hy_y        :        INT;
+END_VAR
+
+// "Programm" ;) 
+
+controller(actual:=ActT,Set_Point:=SetT);
+hy_y := REAL_TO_INT(controller.Y);
+ActT := ActT + (hy_y * 0.0005) - 0.01; // Heizung bei 100 % + 0,05 Grad pro 20 ms und Wärmeverlust - 0,01 Grad pro 20 ms
+
+(*
+Simple PID-Regler that simulates the water boiler.
+
+*)
