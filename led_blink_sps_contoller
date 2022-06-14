@@ -6,7 +6,7 @@ VAR
 	ccc : TON;
 END_VAR
 
-// Programm that turn on from 10 leds on controller for 300 ms
+// Programm that turn on  one led from 8 leds on controller for 300 ms
 
  CASE i OF
 	0: 
